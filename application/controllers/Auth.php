@@ -8,22 +8,35 @@ class Auth extends CI_Controller {
     }
 
     public function login() {
+        $this->load->library('form_validation');
         $this->load->view('login_form');
     }
     
     public function do_login() {
-        $this->load->model('User_model');
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
+        $this->load->library('form_validation');
+        $this->load->helper('url');
+        $this->form_validation->set_rules('username','User Name','required');
+        $this->form_validation->set_rules('password','Password','required');
+        if($this->form_validation->run()==FALSE){
+            $this->load->view('login_form');
+        }else{
         
-        if ($this->User_model->check_login($username, $password)) {
-            $this->session->set_userdata('user', $username);
-            redirect('dashboard');
-        } else {
-            redirect('auth/login');
+            $this->load->model('User_model');
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            
+            if ($this->User_model->check_login($username, $password)) {
+                $this->session->set_userdata('user', $username);
+                redirect('dashboard');
+            } else {
+                redirect('auth/login');
+            }
         }
-    }
-    
+        
+        }
+
+        
+
     public function logout() {
         $this->session->unset_userdata('user');
         redirect('auth/login');
