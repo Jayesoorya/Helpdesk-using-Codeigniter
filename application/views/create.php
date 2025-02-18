@@ -14,14 +14,15 @@
     <div class="card-body">
     <form method="post" action="<?php echo site_url('dashboard/store'); ?>">
         <label>Ticket:</label>
-        <input class="form-control" type="text" name="Ticket"  required><br>
+        <input class="form-control" type="text" name="Ticket" value="<?php echo set_value('Ticket'); ?>"  required><br>
+        <small class="text-danger"><?php echo form_error('Ticket'); ?></small><br>
         <label>Description:</label>
-        <input class="form-control" type="text" name="description" ><br>
+        <input class="form-control" type="text" name="description" value="<?php echo set_value('Description');?>"><br>
         <label>Status:</label>
-        <select name="status" style=" width: 140px; height:40px; border-radius:10px; margin-bottom:30px;">
-            <option value="Open">Open</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Closed">Closed</option>
+        <select name="Status" style=" width: 140px; height:40px; border-radius:10px; margin-bottom:30px;">
+            <option value="Open" <?php echo set_select('status', 'Open'); ?>>Open</option>
+            <option value="In Progress" <?php echo set_select('status', 'In Progress'); ?>>In Progress</option>
+            <option value="Closed" <?php echo set_select('status', 'Closed'); ?>>Closed</option>
         </select><br>
         <button class="btn btn-info" type="submit">Create</button>
     </form>

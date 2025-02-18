@@ -11,6 +11,11 @@ class Ticket_model extends CI_Model {
     }
     
     public function insert($data) {
+        $data = [
+                  'Ticket' => $this->input->post('Ticket'),
+                  'Description' => $this->input->post('Description'),
+                  'Status' => $this->input->post('Status'),
+    ];
         return $this->db->insert('tickets', $data);
     }
     
