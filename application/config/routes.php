@@ -59,3 +59,10 @@ $route['create'] = 'dashboard/create';
 $route['details/(:num)'] = 'dashboard/details/$1';
 $route['update/(:num)'] = 'dashboard/edit/$1';
 
+$route['demo'] = 'ApiDemoController/index';
+$route['employee'] = 'ApiEmployee/index';
+$route['store'] = 'ApiEmployee/storeEmployee';
+$route['find/(:any)'] = 'ApiEmployee/findEmployee/$1';
+$route['update/(:num)'] = 'ApiEmployee/updateEmployee/$1';
+$route['delete/(:num)'] = 'ApiEmployee/deleteEmployee/$1';
+
