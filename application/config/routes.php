@@ -59,5 +59,3 @@ $route['create'] = 'dashboard/create';
 $route['details/(:num)'] = 'dashboard/details/$1';
 $route['update/(:num)'] = 'dashboard/edit/$1';
 
-
-
